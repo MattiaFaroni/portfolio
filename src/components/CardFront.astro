@@ -1,0 +1,198 @@
+---
+import SocialLink from './SocialLink.astro';
+import { db } from '../lib/database';
+---
+
+<div class="card-face card-front">
+  <div class="carbon-matte" aria-hidden="true"></div>
+
+  <div class="front-header">
+    <div class="social-icons">
+      <SocialLink href={db.socials.linkedin} label="LinkedIn">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4.98 3.5A2.5 2.5 0 0 1 7.5 6a2.5 2.5 0 1 1-2.52-2.5zM4 8.98h3V21H4V8.98zM9.5 8.98h2.9v1.64h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V21h-3v-6.5c0-1.55-.03-3.54-2.16-3.54-2.16 0-2.49 1.68-2.49 3.43V21h-3V8.98z" />
+        </svg>
+      </SocialLink>
+
+      <SocialLink href={db.socials.github} label="GitHub">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.77.6-3.35-1.17-3.35-1.17-.45-1.14-1.1-1.44-1.1-1.44-.9-.62.07-.61.07-.61 1 .07 1.53 1.02 1.53 1.02.89 1.52 2.34 1.08 2.91.83.09-.64.35-1.08.63-1.33-2.21-.25-4.54-1.1-4.54-4.9 0-1.08.39-1.96 1.02-2.65-.1-.25-.44-1.27.1-2.65 0 0 .83-.27 2.72 1.01A9.4 9.4 0 0 1 12 6.8c.85 0 1.7.11 2.5.33 1.88-1.28 2.71-1.01 2.71-1.01.55 1.38.21 2.4.1 2.65.64.69 1.02 1.57 1.02 2.65 0 3.81-2.34 4.65-4.57 4.89.36.32.68.94.68 1.9v2.81c0 .27.18.58.69.48A10 10 0 0 0 12 2z" />
+        </svg>
+      </SocialLink>
+
+      <SocialLink href={db.socials.instagram} label="Instagram">
+        <svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+        </svg>
+      </SocialLink>
+    </div>
+  </div>
+
+  <div class="front-content">
+    <div>
+      <p class="based">
+        <svg class="based-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 22s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12z" />
+          <path
+            d="M12 13.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4z"
+            fill="#0b0e14"
+          />
+        </svg>
+        {db.location}
+      </p>
+      <h1 class="name">{db.fullName}</h1>
+      <p class="role">{db.profession}</p>
+    </div>
+    <p class="bio-label">Bio</p>
+    <p class="bio">{db.bio}</p>
+  </div>
+</div>
+
+<style>
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--radius);
+    padding: var(--pad);
+    background: #0b0e14;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    outline: 1px solid rgba(0, 0, 0, 0.85);
+    outline-offset: -2px;
+
+    transform: translateZ(0);
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 28px 56px -10px rgba(0, 0, 0, 0.95),
+      0 10px 20px -4px rgba(0, 0, 0, 0.85),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+      inset 0 -1px 0 0 rgba(0, 0, 0, 0.8);
+  }
+
+  .card-face::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carbon-matte {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      repeating-linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.04) 0px,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px,
+        transparent 4px
+      ),
+      repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.02) 0px,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+  }
+
+  .card-front {
+    padding-top: clamp(8px, 2.5cqw, 14px);
+    padding-bottom: clamp(8px, 3cqw, 16px);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: clamp(6px, 2cqw, 11px);
+  }
+
+  .front-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 10px;
+    min-height: clamp(20px, 5.4cqw, 28px);
+    position: relative;
+    z-index: 2;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: clamp(6px, 2.3cqw, 12px);
+    align-items: center;
+  }
+
+  .icon {
+    width: clamp(14px, 3.85cqw, 20px);
+    height: clamp(14px, 3.85cqw, 20px);
+    display: block;
+    fill: currentColor;
+  }
+
+  .front-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .name {
+    font-size: var(--h1);
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.05;
+    color: #ffffff;
+    overflow-wrap: anywhere;
+  }
+
+  .role {
+    margin: clamp(4px, 1.5cqw, 8px) 0 0 0;
+    font-size: var(--role);
+    color: var(--muted);
+    line-height: 1.2;
+    font-weight: 500;
+  }
+
+  .based {
+    margin: 0 0 clamp(3px, 1.15cqw, 6px) 0;
+    display: flex;
+    align-items: center;
+    gap: clamp(5px, 1.55cqw, 8px);
+    color: rgba(148, 163, 184, 0.95);
+    font-size: clamp(9px, 2.7cqw, 14px);
+    font-weight: 700;
+  }
+
+  .based-icon {
+    width: clamp(12px, 3.1cqw, 16px);
+    height: clamp(12px, 3.1cqw, 16px);
+    display: block;
+    fill: var(--a);
+    opacity: 0.95;
+  }
+
+  .bio-label {
+    margin: clamp(12px, 4.5cqw, 24px) 0 0 0;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    font-size: clamp(9px, 2.5cqw, 13px);
+    color: var(--a);
+  }
+
+  .bio {
+    margin: clamp(4px, 1.55cqw, 8px) 0 0 0;
+    font-size: var(--bio);
+    color: rgba(226, 232, 240, 0.72);
+    line-height: 1.35;
+    max-width: 56ch;
+    overflow-wrap: anywhere;
+  }
+</style>

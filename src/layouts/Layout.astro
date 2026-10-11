@@ -1,0 +1,91 @@
+---
+import { db } from '../lib/database';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${db.fullName} – ${db.profession}`,
+  description = `${db.fullName} – ${db.profession} ${db.location}`,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --p: #38bdf8;
+    --a: #22d3ee;
+    --text-main: #f8fafc;
+    --muted: #94a3b8;
+
+    --w: 520px;
+    --ratio-w: 520;
+    --ratio-h: 320;
+
+    --radius: clamp(12px, 2.5vw, 18px);
+
+    --h1: clamp(16px, 6cqw, 34px);
+    --role: clamp(11px, 3.2cqw, 17px);
+    --bio: clamp(10px, 2.7cqw, 14px);
+    --pad: clamp(8px, 6cqw, 36px);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  html {
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100svh;
+    background: radial-gradient(circle at 50% 50%, #0b1322 0%, #000000 85%);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    perspective: 2000px;
+    overflow-x: hidden;
+    padding: 24px 16px;
+    touch-action: manipulation;
+  }
+
+  main {
+    width: 100%;
+  }
+</style>

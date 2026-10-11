@@ -1,0 +1,164 @@
+---
+import { db } from '../lib/database';
+---
+
+<div class="card-face card-back">
+  <div class="carbon-matte" aria-hidden="true"></div>
+
+  <div class="rows">
+    {db.categories.map((cat) => (
+      <section class="row">
+        <div class="cat">
+          {cat.title}
+          <small>{cat.subtitle}</small>
+        </div>
+        <ul class="slist">
+          {cat.skills.map((skill) => (
+            <li>{skill}</li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</div>
+
+<style>
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--radius);
+    padding: var(--pad);
+    background: #0b0e14;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    outline: 1px solid rgba(0, 0, 0, 0.85);
+    outline-offset: -2px;
+
+    transform: translateZ(0);
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 28px 56px -10px rgba(0, 0, 0, 0.95),
+      0 10px 20px -4px rgba(0, 0, 0, 0.85),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+      inset 0 -1px 0 0 rgba(0, 0, 0, 0.8);
+  }
+
+  .card-face::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carbon-matte {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      repeating-linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.04) 0px,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px,
+        transparent 4px
+      ),
+      repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.02) 0px,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+  }
+
+  .card-back {
+    color: var(--text-main);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .rows {
+    width: 100%;
+    max-width: 430px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(5px, 1.9cqw, 10px);
+    position: relative;
+    z-index: 2;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: minmax(0, 24cqw) minmax(0, 1fr);
+    gap: clamp(6px, 2.3cqw, 12px);
+    align-items: start;
+    padding-top: clamp(5px, 1.9cqw, 10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .row:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .cat {
+    font-size: clamp(9px, 2.4cqw, 13px);
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    color: rgba(34, 211, 238, 0.95);
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .cat small {
+    display: block;
+    margin-top: clamp(2px, 0.8cqw, 4px);
+    text-transform: none;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: rgba(148, 163, 184, 0.88);
+    font-size: 0.95em;
+  }
+
+  .slist {
+    margin: 0;
+    padding-left: clamp(10px, 3.1cqw, 16px);
+    list-style: disc;
+    font-size: clamp(9px, 2.45cqw, 13px);
+    line-height: 1.18;
+    color: rgba(226, 232, 240, 0.86);
+  }
+
+  .slist li {
+    margin: clamp(1px, 0.6cqw, 3px) 0;
+    overflow-wrap: anywhere;
+  }
+
+  .slist li::marker {
+    color: var(--a);
+  }
+
+  @media (max-width: 430px) {
+    .rows {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .row {
+      grid-template-columns: minmax(0, 25cqw) minmax(0, 1fr);
+    }
+
+    .cat {
+      overflow-wrap: anywhere;
+    }
+  }
+</style>
