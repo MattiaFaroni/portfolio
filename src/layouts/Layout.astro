@@ -7,9 +7,24 @@ interface Props {
 }
 
 const {
-  title = `${db.fullName} – ${db.profession}`,
-  description = `${db.fullName} – ${db.profession} ${db.location}`,
+  title = `${db.fullName}`,
+  description = `${db.fullName} – ${db.profession} ${db.location}. ${db.bio}`,
 } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: db.fullName,
+  jobTitle: db.profession,
+  description: db.bio,
+  url: canonicalURL.href,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Verona',
+    addressCountry: 'IT',
+  },
+  sameAs: Object.values(db.socials),
+};
 ---
 
 <!doctype html>
@@ -20,7 +35,41 @@ const {
     <meta name="theme-color" content="#000000" />
     <meta name="description" content={description} />
     <title>{title}</title>
-
+    <link
+      rel="icon"
+      href={`${import.meta.env.BASE_URL}/favicon.ico`}
+      sizes="any"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href={`${import.meta.env.BASE_URL}/favicon-32x32.png`}
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href={`${import.meta.env.BASE_URL}/favicon-16x16.png`}
+      sizes="16x16"
+    />
+    <link
+      rel="apple-touch-icon"
+      href={`${import.meta.env.BASE_URL}/apple-touch-icon.png`}
+    />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="profile:first_name" content={db.name} />
+    <meta property="profile:last_name" content={db.surname} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

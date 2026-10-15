@@ -1,10 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import BusinessCard from '../components/BusinessCard.astro';
-import { db } from '../lib/database';
 ---
 
-<Layout title={`${db.fullName}`}>
+<Layout>
   <main>
     <BusinessCard />
   </main>
