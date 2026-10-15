@@ -38,7 +38,7 @@ skills, and social links.
 
 ## Getting started
 
-Requires Node.js >= 22.12.0 and npm.
+Requires Node.js >= 22.22.0 and npm.
 
 ```sh
 npm ci
