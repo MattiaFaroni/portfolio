@@ -14,13 +14,13 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.4.0"
+    "astro": "^7.4.4"
   },
   "allowScripts": {
     "esbuild": true
   },
   "devDependencies": {
     "prettier": "^3.9.10",
-    "prettier-plugin-astro": "^1.1.1"
+    "prettier-plugin-astro": "^1.1.2"
   }
 }
